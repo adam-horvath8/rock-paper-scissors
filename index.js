@@ -5,11 +5,8 @@ function getComputerChoice(){
     randomWord = words[randomIndex];
     return randomWord;
 }
-computerChoice = getComputerChoice()
-console.log(computerChoice);
-
-playerInput = prompt('Please enter Rock or Paper or Scissors');
-inputLowerCase = playerInput.toLowerCase();
+let myScore = 0;
+let pcScore = 0;
 
 function gamePlay(computerChoice, userInput) {
 
@@ -17,25 +14,38 @@ function gamePlay(computerChoice, userInput) {
         return console.log("It's a draw");
     }
     else if (computerChoice === "Rock" && userInput === "paper"){
-        return console.log("It's a win");
+        myScore += 1;
+        console.log("It's a win");
+        return  console.log("Your score is: "+ myScore);
     }
     else if(computerChoice === "Rock" && userInput === "scissors"){
-        return console.log("It's a loss");
+        pcScore += 1;
+        console.log("It's a loss");
+        return console.log("Pc score is: "+ pcScore);
     }
     else if (computerChoice === "Paper" && userInput === "rock"){
-        return console.log("It's a loss");
+        pcScore += 1;
+        console.log("It's a loss");
+        return console.log("Pc score is: "+ pcScore);
     }
     else if (computerChoice === "Paper" && userInput === "paper"){
         return console.log("It's a draw");
     }
     else if (computerChoice === "Paper" && userInput === "scissors"){
-        return console.log("It's a win");
+        myScore += 1;
+        console.log("It's a win");
+        return console.log("Your score is: "+ myScore);
     }
     else if (computerChoice === "Scissors" && userInput === "rock"){
-        return console.log("It's a win");
+        myScore += 1;
+        console.log("It's a win");
+        return console.log("Your score is: "+ myScore);
+
     }
     else if (computerChoice === "Scissors" && userInput === "paper"){
-        return console.log("It's a loss");
+        pcScore += 1;
+        console.log("It's a loss");
+        return console.log("Pc score is: "+ pcScore);
     }
     else if (computerChoice === "Scissors" && userInput === "scissors"){
         return console.log("It's a draw");
@@ -45,4 +55,21 @@ function gamePlay(computerChoice, userInput) {
     }
 
 }
-gamePlay(computerChoice, inputLowerCase);
+
+function game(){
+    for (let i = 0; i <= 4; i++){
+        computerChoice = getComputerChoice()
+        playerInput = prompt('Please enter Rock or Paper or Scissors');
+        console.log(computerChoice);
+        inputLowerCase = playerInput.toLowerCase();
+        gamePlay(computerChoice, inputLowerCase);
+    }
+    if (myScore >pcScore){
+        console.log("You won the game");
+    }
+    else {
+        console.log("You lost the game");
+    }
+}
+
+game();
